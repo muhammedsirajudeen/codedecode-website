@@ -1,0 +1,139 @@
+body{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+.main-content-container{
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.image{
+    height: 30vh;
+    width: 60vw;
+}
+.text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 900;
+    
+}
+.hidden{
+    visibility: hidden;
+    transition: 1s;
+}
+.white-box-container{
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+    align-items: center;
+
+    background-color: white;
+    width: 40vh;
+    height: auto;
+    margin-top: 5%;
+    border-radius: 20px;
+    transition: 2s;
+}
+.roadmap-image{
+    height: 100px;
+    width: 100px;
+    margin-top: 5%;
+}
+.information-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.info-heading{
+    font-size: x-large;
+    font-weight: 900;
+    color: black;
+    margin-top: 20%;
+}
+.list{
+    list-style-type:circle;
+    color: black;
+}
+.level-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+.sub-level-container{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: white;
+}
+.flag-image{
+    height: 30px;
+    width: 30px;
+    margin-top: 10%;
+}
+.white-line{
+    background-color: white;
+    width: 200px;
+    height: 4px;
+    transform: rotateZ(70deg)
+   
+}
+#white-line-one{
+    margin-left: 10vw;
+    margin-top: 20vw;
+    width: 210px;
+    transform: rotateZ(65deg);
+}
+#level2{
+    margin-left: 20vh;
+   
+}
+#white-line-two{
+    width: 210px;
+    transform: rotateZ(-55deg);
+    
+}
+#level3{
+    margin-right: 15vh;
+  
+}
+#white-line-three{
+    margin-top: 10vh;
+    transform: rotateZ(50deg);
+    width: 280px;
+}
+#level4{
+    margin-left: 35vw;
+    
+}
+#white-line-four{
+    
+    transform: rotateZ(-60deg);
+}
+#level5{
+    margin-right: 30vw;
+}
+.level-heading{
+    font-size: small;
+    font-weight: 900;
+    color: black;
+    
+}
+.level-main-heading{
+    font-size: xx-large;
+    font-weight: 900;
+}
+#links{
+    font-size: 10px;
+
+}

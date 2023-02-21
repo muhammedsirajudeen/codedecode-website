@@ -1,0 +1,50 @@
+.login-main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    background-color: white;
+    color: black;
+    height: auto;
+    width: 80vw;
+    border-radius: 10px;
+
+}
+.label-one{
+    margin-top: 3%;
+}
+label{
+    margin-top: 10%;
+}
+.username-input{
+    width: 80%;
+    height: 7%;
+}
+.password-input{
+    width: 80%;
+    height: 7%;
+}
+#button{
+    margin-top: 5vh;
+    width: 30%;
+    height: 10%;
+    
+}
+#link{
+    margin-left: 40vw;
+    margin-top: 3%;
+    font-size: smaller;
+}
+.warning{
+    color: red;
+    font-size: small;
+}
+.no-warning{
+    color: green;
+    font-size: small;
+}
