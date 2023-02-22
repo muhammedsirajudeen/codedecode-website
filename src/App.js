@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Layout from "./Layout";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import Level1 from "./Pages/levels/level1";
 function App() {
   return (
     <BrowserRouter>
@@ -11,10 +12,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />}></Route>
-      <Route path="/home" element={<Home />}>
-       
+      <Route path="/home" element={<Home />}></Route>
+      <Route path="/level1" element={<Level1 />}></Route>
 
-      </Route>
     </Routes>
   </BrowserRouter>
   );

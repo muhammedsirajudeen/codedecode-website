@@ -1,12 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './stylesheets/Home.css'
 import Logo from '../cicada1.jpg'
 import roadmap from '../roadmap.png'
 import animator from '../Helper/animator'
 import flag from '../flag.png'
+import axios from 'axios'
+import levelUpdater from '../Helper/levelUpdater'
 function Home() {
    
-
+    useEffect(()=>{
+        async function verifier(){
+            let token=localStorage.getItem("token")
+            let res=await axios.post("http://localhost:2000/verifier",{
+              token:token
+            })
+            console.log(res.data)
+            if(res.data.status!==200){
+              window.location="/"
+            }
+            //also fetch the data about the levels pending
+            let progress=await axios.post("http://localhost:2000/progress",{
+                token:token
+              })
+              if(progress.data.data===null){
+                alert("please try refreshing the page or sign out and sign in again")
+              }else{
+                let level=progress.data.data
+                levelUpdater(level)
+            
+              }
+          }
+          verifier()
+    },[])
     animator()
     setTimeout(()=>{
         document.querySelector(".hidden").className="white-box-container"
