@@ -62,7 +62,7 @@ function Login() {
 
             <button id='button' onClick={loginHandler}>login</button>
 
-            <a href='/signup' id='link'>click to signup</a>
+            <a href='/signup' id='link'>click to signup .</a>
         </div>
     </div>
   )
