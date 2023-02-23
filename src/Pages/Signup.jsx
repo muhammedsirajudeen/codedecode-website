@@ -56,7 +56,7 @@ function Signup() {
             number:number
         })
         alert(res.data.data)
-        if(res.data.status===200){
+        if(res.data.status==="200"){
             window.location='/'
         }
     }

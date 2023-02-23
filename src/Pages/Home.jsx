@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './stylesheets/Home.css'
 import Logo from '../cicada1.jpg'
 import roadmap from '../roadmap.png'
@@ -7,7 +7,12 @@ import flag from '../flag.png'
 import axios from 'axios'
 import levelUpdater from '../Helper/levelUpdater'
 function Home() {
-   
+    const leveldata=useRef({})
+    const levelone=useRef()
+    const leveltwo=useRef()
+    const levelthree=useRef()
+    const levelfour=useRef()
+    const levelfive=useRef()
     useEffect(()=>{
         async function verifier(){
             let token=localStorage.getItem("token")
@@ -26,7 +31,9 @@ function Home() {
                 alert("please try refreshing the page or sign out and sign in again")
               }else{
                 let level=progress.data.data
-                levelUpdater(level)
+                leveldata.current=level
+         
+                
             
               }
           }
@@ -36,6 +43,31 @@ function Home() {
     setTimeout(()=>{
         document.querySelector(".hidden").className="white-box-container"
     },1000)
+    async function tester(){
+        let token=localStorage.getItem("token")
+        console.log(token)
+        let progress=await axios.post("http://localhost:2000/progress",{
+            token:token
+          })
+          if(progress.data.data===null){
+            alert("please try refreshing the page or sign out and sign in again")
+          }else{
+            let level=progress.data.data
+            console.log(level)
+            if(level.level1==="success") levelone.current.style.backgroundColor="lightgreen"
+            if(level.level2==="success") leveltwo.current.style.backgroundColor="lightgreen"
+    
+            if(level.level3==="success") levelthree.current.style.backgroundColor="lightgreen"
+            if(level.level4==="success") levelfour.current.style.backgroundColor="lightgreen"
+            if(level.level5==="success") levelfive.current.style.backgroundColor="lightgreen"
+     
+            
+        
+          }
+        
+     
+    }
+    tester()
     return (
     
     <div className='main-content-container'>
@@ -62,45 +94,45 @@ function Home() {
                 </div>
             </div>
         </div>
-        <div className='level-container'>
+        <div className='level-container '>
             <div className='level-main-heading'>LEVELS</div>
-            <div className='sub-level-container' id='level1'>
+            <div className='sub-level-container' id='level1' ref={levelone}>
                 
                 <img src={flag} alt='loading' className='flag-image'/>
-                <div className='level-heading'>LEVEL 1</div>
+                <div className='level-heading'>LEVEL 1 </div>
                 <a href='/level1' id='links'>solve level 1</a>
             </div>
             
             <div className='white-line' id='white-line-one'></div>
 
-            <div className='sub-level-container' id='level2'>
+            <div className='sub-level-container' id='level2' ref={leveltwo}>
                 <img src={flag} alt='loading' className='flag-image'/>
                 <div className='level-heading'>LEVEL 2</div>
-                <a href='/level1' id='links'>solve level 2</a>
+                <a href='/level2' id='links'>solve level 2</a>
             </div>
 
             <div className='white-line' id='white-line-two'></div>
             
-            <div className='sub-level-container' id='level3' >
+            <div className='sub-level-container' id='level3' ref={levelthree} >
                 <img src={flag} alt='loading' className='flag-image'/>
                 <div className='level-heading'>LEVEL 3</div>
-                <a href='/level1' id='links'>solve level 3</a>
+                <a href='/level3' id='links'>solve level 3</a>
             </div>
 
             <div className='white-line' id='white-line-three'></div>
             
-            <div className='sub-level-container' id='level4'>
+            <div className='sub-level-container' id='level4' ref={levelfour}>
                 <img src={flag} alt='loading' className='flag-image'/>
                 <div className='level-heading'>LEVEL 4</div>
-                <a href='/level1' id='links'>solve level 4</a>
+                <a href='/level4' id='links'>solve level 4</a>
             </div>
 
             <div className='white-line' id='white-line-four'></div>
 
-            <div className='sub-level-container' id='level5'>
+            <div className='sub-level-container' id='level5' ref={levelfive}>
                 <img src={flag} alt='loading' className='flag-image'/>
                 <div className='level-heading'>LEVEL 5</div>
-                <a href='/level1' id='links'>solve level 5</a>
+                <a href='/level5' id='links'>solve level 5</a>
             </div>
         </div>
     </div>

@@ -75,7 +75,7 @@ app.post("/signup",async (req,res)=>{
             [req.body.username,req.body.password,req.body.number]).then(()=>{
                 let userLevel=new User({
                     username:req.body.username,
-                    level1:"success",
+                    level1:"pending",
                     level2:"pending",
                     level3:"pending",
                     level4:"pending",
@@ -124,7 +124,7 @@ app.post("/level1",(req,res)=>{
         const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
         if(decoded){
             let username=decoded.username
-            User.updateOne({ username: username }, { level1: "data insertion success" }).then(()=>console.log("success"))
+            User.updateOne({ username: username }, { level1: "success" }).then(()=>console.log("success"))
             .catch(()=>console.log("error"))
             res.send({status:200,flag:"success"})
         }
@@ -142,6 +142,158 @@ app.post("/level1",(req,res)=>{
     
 })
 
+
+app.post("/level2",(req,res)=>{
+    try{
+        console.log(req.body.flag)
+    if(req.body.flag==="Y29tbW9kdXM="){
+        const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
+        if(decoded){
+            let username=decoded.username
+            User.updateOne({ username: username }, { level2: "success" }).then(()=>console.log("success"))
+            .catch(()=>console.log("error"))
+            res.send({status:200,flag:"success"})
+        }
+        else{
+            res.send({status:403,data:"token impaired"})
+        }
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
+
+app.post("/level3",(req,res)=>{
+    try{
+        console.log(req.body.flag)
+    if(req.body.flag==="adalovelace"){
+        const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
+        if(decoded){
+            let username=decoded.username
+            User.updateOne({ username: username }, { level3: "success" }).then(()=>console.log("success"))
+            .catch(()=>console.log("error"))
+            res.send({status:200,flag:"success"})
+        }
+        else{
+            res.send({status:403,data:"token impaired"})
+        }
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
+
+app.post("/level4",(req,res)=>{
+    try{
+        console.log(req.body.flag)
+    if(req.body.flag==="pagerank"){
+        const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
+        if(decoded){
+            
+            // User.updateOne({ username: username }, { level3: "success" }).then(()=>console.log("success"))
+            // .catch(()=>console.log("error"))
+            res.send({status:200,flag:"success",nextflag:"083b66a64bcd03102f397b7fbba547f3451f9bd29e62b0c8b358d5743d3da4239f3df3cd532f8b1e59d0963868183175f1e0cf1b2dca37f8b4a2d5e5db110493"})
+
+        }
+        else{
+            res.send({status:403,data:"token impaired"})
+        }
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
+
+app.post("/flag4",(req,res)=>{
+    try{
+    console.log(req.body.data)
+    if(req.body.data==="9633120385"){
+        
+        
+        let username=req.body.username
+        User.updateOne({ username: username }, { level4: "success" }).then(()=>console.log("success"))
+        .catch(()=>console.log("error"))
+        res.send({status:200,flag:"success move to the final level"})
+
+    
+     
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
+app.post("/level5",(req,res)=>{
+    try{
+        console.log(req.body.flag)
+    if(req.body.flag==="niccolomachiavelli"){
+        const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
+        if(decoded){
+            
+            // User.updateOne({ username: username }, { level3: "success" }).then(()=>console.log("success"))
+            // .catch(()=>console.log("error"))
+            const token=jwt.sign({flag:"790714000612345"},"niccolomachiavelli")
+            res.send({status:200,flag:"success",nextflag:token})
+
+        }
+        else{
+            res.send({status:403,data:"token impaired"})
+        }
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
+app.post("/flag5",(req,res)=>{
+    try{
+        console.log(req.body.data)
+    if(req.body.data==="790714000612345"){
+        const decoded=jwt.verify(req.body.token,process.env.SECRET_KEY)
+        if(decoded){
+            let username=decoded.username
+            User.updateOne({ username: username }, { level5: "success" }).then(()=>console.log("success"))
+            .catch(()=>console.log("error"))
+           
+            res.send({status:200,flag:"success"})
+
+        }
+        else{
+            res.send({status:403,data:"token impaired"})
+        }
+    }else{
+        res.send({status:200,flag:"failure"})
+    }
+    }
+    catch(error){
+        res.send({status:403,data:"internal error"})
+    }
+
+    
+})
 
 app.listen(2000,()=>{
     console.log("server started")
